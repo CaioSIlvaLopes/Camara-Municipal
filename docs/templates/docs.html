@@ -127,42 +127,51 @@ button:hover {
 </style>
 
 <html>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 <head>
     
-    <title>Pesquisador de Arquivos</title>
+    <title>Acervo Digital</title>
 </head>
 <body>
 
     <div class="search-section">
         <h1>Pesquisador de Arquivos</h1>
-        <form id="searchForm" method="GET" action="{% url 'docs_list'%}">
-            <input type="text" id="searchInput" name="search" placeholder="Nome do vereador..." required>
+        <form id="searchForm" method="GET" action="{% url 'docs_list' %}">
+            <input type="text" id="searchInput" name="search" placeholder="Nome do autor" required>
             <select id="fileTypeSelect" name="tipos">
-                <option >Selecione o tipo de arquivo</option>
+                <option value="none" selected disabled hidden>Selecione o tipo de arquivo</option>
                 <option value="DecretosDeLei">Decretos de lei</option>
                 <option value="Ementas">Ementas</option>
                 <option value="Medalhas">Medalhas</option>
-                
             </select>
-            
             <button type="submit">Pesquisar</button>
         </form>
         <div class="result" id="result">
             <h2>Lista de Matérias</h2>
+            {% if docs %}
             {% for doc in docs %}
             <div class="card">
-                <h3>{{ doc.tipe }}: {{ doc.code }}/{{ doc.year }}</h3>
-                <img src="{{ doc.photo.url }}">
-                <p>{{ doc.description }} <a href="{{ docs.photo }}" class="read-more">Veja mais</a></p>
+                <h3>{{ doc.tipe }}: {{ doc.code }}/{{ doc.date }}</h3>
+                <p>
+                    {{ doc.description }}
+                    
+                    <a href="{ % url 'vizualizer'% }" class="read-more" >Veja mais</a>
+                </p>
                 <div class="info">
-                    <span class="date">  <i class="fa fa-calendar"></i> {{ doc.year }} </span>
-                    <span class="author"><i class="fa fa-user">    </i>   {{ doc.autor }}</span>
+                    <span class="date">
+                        <i class="fa fa-calendar"></i> {{ doc.date }}
+                    </span>
+                    <span class="author">
+                        <i class="fa fa-user"></i> {{ doc.autor }}
+                    </span>
                 </div>
             </div>
             {% endfor %}
+            {% else %}
+            <p class="no-results">Nenhum arquivo encontrado.</p>
+            {% endif %}
         </div>
-        
     </div>
 
     

@@ -3,8 +3,9 @@ from docs.models import Docs,Type
 
 
 class DocAdmin(admin.ModelAdmin):
-    list_display = ('tipe', 'autor','year')
-    search_fields = ('tipe',)
+    list_display = ('id','tipe', 'autor','date')
+    
+    search_fields = ('tipe','autor')
 
 
 admin.site.register(Docs, DocAdmin)
