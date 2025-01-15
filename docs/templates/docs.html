@@ -58,15 +58,76 @@ button:hover {
 }
 
 #result {
-    margin: 20px;
-    font-size: 1.2em;
-    width: min 20%; 
-    height: 100px;
-    background-color:  #f0f8ff;
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
 }
+
+#result h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.card h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 10px;
+}
+
+.card .read-more {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card .read-more:hover {
+    text-decoration: underline;
+}
+
+.info {
+    font-size: 12px;
+    color: #777;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info span {
+    display: flex;
+    align-items: center;
+}
+
+.info i {
+    margin-right: 5px;
+    color: #888;
+}
+
 </style>
 
 <html>
+    
 <head>
     
     <title>Pesquisador de Arquivos</title>
@@ -77,24 +138,34 @@ button:hover {
         <h1>Pesquisador de Arquivos</h1>
         <form id="searchForm" method="GET" action="{% url 'docs_list'%}">
             <input type="text" id="searchInput" name="search" placeholder="Nome do vereador..." required>
-            <select id="fileTypeSelect">
-                <option value="">Selecione o tipo de arquivo</option>
-                <option value="decreto">Decretos de lei</option>
-                <option value="ementa">Ementas</option>
-                <option value="medal">Medalhas</option>
+            <select id="fileTypeSelect" name="tipos">
+                <option >Selecione o tipo de arquivo</option>
+                <option value="DecretosDeLei">Decretos de lei</option>
+                <option value="Ementas">Ementas</option>
+                <option value="Medalhas">Medalhas</option>
                 
             </select>
             
             <button type="submit">Pesquisar</button>
         </form>
         <div class="result" id="result">
+            <h2>Lista de Matérias</h2>
             {% for doc in docs %}
-           <h1>{{doc.autor}} - {{doc.tipe}} - {{doc.year}}</h1>
-           {% endfor %}
+            <div class="card">
+                <h3>{{ doc.tipe }}: {{ doc.code }}/{{ doc.year }}</h3>
+                <img src="{{ doc.photo.url }}">
+                <p>{{ doc.description }} <a href="{{ docs.photo }}" class="read-more">Veja mais</a></p>
+                <div class="info">
+                    <span class="date">  <i class="fa fa-calendar"></i> {{ doc.year }} </span>
+                    <span class="author"><i class="fa fa-user">    </i>   {{ doc.autor }}</span>
+                </div>
+            </div>
+            {% endfor %}
         </div>
+        
     </div>
 
-    <script src="script.js"></script>
+    
 </body>
 </html>
 {% endblock%}
