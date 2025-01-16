@@ -1,136 +1,156 @@
-
-
 {% block content %}
 <style>
-    :root{
-    --primary-color: #ffffff;
-    --secondy-color: #f59a24;
-}
+    :root {
+        --primary-color: #ffffff;
+        --secondy-color: #f59a24;
+    }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
 
-.search-section {
-    background:var(--primary-color);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    max-height: 1200px;
-    margin: auto;
-    
-}
+    .search-section {
+        background: var(--primary-color);
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: auto;
+    }
 
-h1 {
-    text-align: center;
-}
+    h1 {
+        text-align: center;
+    }
 
-form {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 1%;
-}
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 1%;
+    }
 
-input[type="text"], select {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    input[type="text"],
+    select {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-button {
-    padding: 10px;
-    background-color:var(--secondy-color);
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    button {
+        padding: 10px;
+        background-color: var(--secondy-color);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-}
+    button:hover {
+        background-color: var(--secondy-color);
+    }
 
-button:hover {
-    background-color:(--secondy-color);
-}
+    #result {
+        font-family: Arial, sans-serif;
+        margin: 20px auto;
+        max-width: 800px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #fff;
+    }
 
-#result {
-    font-family: Arial, sans-serif;
-    margin: 20px auto;
-    max-width: 800px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-}
+    #result h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #444;
+    }
 
-#result h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #444;
-}
+    .card {
+        border: 1px solid #eee;
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
 
-.card {
-    border: 1px solid #eee;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-}
+    .card h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 5px;
+        color: #333;
+    }
 
-.card h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0 0 5px;
-    color: #333;
-}
+    .card p {
+        font-size: 14px;
+        color: #555;
+        margin: 0 0 10px;
+    }
 
-.card p {
-    font-size: 14px;
-    color: #555;
-    margin: 0 0 10px;
-}
+    .card .read-more {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-.card .read-more {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
+    .card .read-more:hover {
+        text-decoration: underline;
+    }
 
-.card .read-more:hover {
-    text-decoration: underline;
-}
+    .info {
+        font-size: 12px;
+        color: #777;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.info {
-    font-size: 12px;
-    color: #777;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .info span {
+        display: flex;
+        align-items: center;
+    }
 
-.info span {
-    display: flex;
-    align-items: center;
-}
+    .info i {
+        margin-right: 5px;
+        color: #888;
+    }
 
-.info i {
-    margin-right: 5px;
-    color: #888;
-}
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
+    .pagination a,
+    .pagination span {
+        margin: 0 5px;
+        padding: 8px 12px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .pagination a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .pagination .current {
+        font-weight: bold;
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
 </style>
 
 <html>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 <head>
-    
     <title>Acervo Digital</title>
 </head>
 <body>
@@ -138,43 +158,60 @@ button:hover {
     <div class="search-section">
         <h1>Pesquisador de Arquivos</h1>
         <form id="searchForm" method="GET" action="{% url 'docs_list' %}">
-            <input type="text" id="searchInput" name="search" placeholder="Nome do autor" required>
+            <input type="text" id="searchInput" name="search" placeholder="Nome do autor" value="{{ search }}">
             <select id="fileTypeSelect" name="tipos">
                 <option value="none" selected disabled hidden>Selecione o tipo de arquivo</option>
-                <option value="DecretosDeLei">Decretos de lei</option>
-                <option value="Ementas">Ementas</option>
-                <option value="Medalhas">Medalhas</option>
+                <option value="DecretosDeLei" {% if tipos == 'DecretosDeLei' %} selected {% endif %}>Decretos de lei</option>
+                <option value="Ementas" {% if tipos == 'Ementas' %} selected {% endif %}>Ementas</option>
+                <option value="Medalhas" {% if tipos == 'Medalhas' %} selected {% endif %}>Medalhas</option>
             </select>
             <button type="submit">Pesquisar</button>
         </form>
+
         <div class="result" id="result">
             <h2>Lista de Matérias</h2>
-            {% if docs %}
-            {% for doc in docs %}
-            <div class="card">
-                <h3>{{ doc.tipe }}: {{ doc.code }}/{{ doc.date }}</h3>
-                <p>
-                    {{ doc.description }}
-                    
-                    <a href="{ % url 'vizualizer'% }" class="read-more" >Veja mais</a>
-                </p>
-                <div class="info">
-                    <span class="date">
-                        <i class="fa fa-calendar"></i> {{ doc.date }}
-                    </span>
-                    <span class="author">
-                        <i class="fa fa-user"></i> {{ doc.autor }}
+            {% if page_obj %}
+                {% for doc in page_obj %}
+                    <div class="card">
+                        <h3>{{ doc.tipe }}: {{ doc.code }}/{{ doc.date }}</h3>
+                        <p>
+                            {{ doc.description }}
+                            <a href="{% url 'docs_vizualizer' doc.id %}">Veja mais</a>
+                        </p>
+                        <div class="info">
+                            <span class="date">
+                                <i class="fa fa-calendar"></i> {{ doc.date }}
+                            </span>
+                            <span class="author">
+                                <i class="fa fa-user"></i> {{ doc.autor }}
+                            </span>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1{% if search %}&search={{ search }}{% endif %}{% if tipos %}&tipos={{ tipos }}{% endif %}">&laquo; Primeira</a>
+                            <a href="?page={{ page_obj.previous_page_number }}{% if search %}&search={{ search }}{% endif %}{% if tipos %}&tipos={{ tipos }}{% endif %}">Anterior</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}{% if search %}&search={{ search }}{% endif %}{% if tipos %}&tipos={{ tipos }}{% endif %}">Próxima</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}{% if search %}&search={{ search }}{% endif %}{% if tipos %}&tipos={{ tipos }}{% endif %}">Última &raquo;</a>
+                        {% endif %}
                     </span>
                 </div>
-            </div>
-            {% endfor %}
             {% else %}
-            <p class="no-results">Nenhum arquivo encontrado.</p>
+                <p class="no-results">Nenhum arquivo encontrado.</p>
             {% endif %}
         </div>
     </div>
 
-    
 </body>
 </html>
-{% endblock%}
+{% endblock %}
