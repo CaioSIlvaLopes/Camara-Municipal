@@ -9,7 +9,7 @@ class DocModelForm(forms.ModelForm):
             fields = '__all__'
 
 
-# def clean_tipe(self):
+# def clean_tipe(self): validaçoes 
 #       tipe = self.cleaned_data.get('tipe')
 #       if 
 

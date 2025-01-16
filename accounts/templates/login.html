@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ login_form.as_p }}
+        </div>
+
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+<style>
+    .form-container {
+        background: var(--primary-color);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        max-width: 400px;
+        margin: 40px auto;
+        text-align: center;
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+
+    .form-group p {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: var(--text-light);
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--secondary-color);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #e3891d;
+    }
+</style>
+{% endblock %}
