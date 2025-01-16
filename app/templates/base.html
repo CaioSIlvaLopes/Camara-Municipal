@@ -1,0 +1,158 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Acervo Digital{% endblock %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        :root{
+            --primary-color: #ffffff;
+            --secondy-color: #f59a24;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--secondy-color);
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondy-color);
+            padding: 15px;
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .search-section {
+            background: var(--primary-color);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 1%;
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: var(--secondy-color);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--secondy-color);
+        }
+
+        #result {
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            max-width: 800px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        #result h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 5px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #555;
+            margin: 0 0 10px;
+        }
+
+        .info {
+            font-size: 12px;
+            color: #777;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info span {
+            display: flex;
+            align-items: center;
+        }
+
+        .info i {
+            margin-right: 5px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Acervo Digital</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'docs_list' %}">Documentos</a></li>
+                <li><a href="{% url 'new_doc' %}">Adicionar documento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <p>&copy; 2025 Acervo Digital | Todos os direitos reservados</p>
+    </footer>
+
+</body>
+</html>
