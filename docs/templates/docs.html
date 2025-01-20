@@ -10,7 +10,7 @@
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
         margin: 0;
-        padding: 20px;
+        
     }
 
     .search-section {
@@ -132,10 +132,8 @@
         margin: 0 5px;
         padding: 8px 12px;
         text-decoration: none;
-        border: 1px solid #ddd;
         border-radius: 4px;
     }
-
     .pagination a:hover {
         background-color: #f0f0f0;
     }
@@ -145,6 +143,10 @@
         background-color: #007bff;
         color: white;
         border-color: #007bff;
+    }
+    .search-button:hover{
+        background-color: #f59a24;
+        color:black;
     }
 </style>
 
@@ -166,7 +168,7 @@
                 <option value="Ementas" {% if tipos == 'Ementas' %} selected {% endif %}>Ementas</option>
                 <option value="Medalhas" {% if tipos == 'Medalhas' %} selected {% endif %}>Medalhas</option>
             </select>
-            <button type="submit">Pesquisar</button>
+            <button type="submit"class="search-button">Pesquisar</button>
         </form>
 
         <div class="result" id="result">
@@ -174,7 +176,9 @@
             {% if page_obj %}
                 {% for doc in page_obj %}
                     <div class="card">
-                        <h3>{{ doc.tipe }}: {{ doc.code }}/{{ doc.date }}</h3>
+                        <h3> {{ doc.tipe }}: {{ doc.code }}/{{ doc.date }} 
+                            
+                        </h3>
                         <p>
                             {{ doc.description }}
                             <a href="{% url 'docs_vizualizer' doc.id %}">Veja mais</a>

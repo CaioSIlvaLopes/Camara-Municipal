@@ -1,14 +1,24 @@
 {%extends 'base.html'%}
 {% block content%}
+<style>
+    .container-docs{
+        width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+    }
+    .
+</style>
+<div class="container-docs">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 <table>
 {{new_doc_form.as_table}}
 </table>
-
-
-
 <input type="submit" value="Cadastrar" class="bnt btn_primary">
 </form>
-
+</div>
 {% endblock %}

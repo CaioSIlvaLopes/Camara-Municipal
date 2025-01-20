@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,29 +14,41 @@
             --text-color: #333;
             --text-light: #777;
             --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --margem-padrao:30px
         }
-
+        html{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
             color: var(--text-color);
-        }
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            }
 
         header {
             background-color: var(--secondary-color);
             color: #fff;
-            padding: 20px;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--box-shadow);
+            margin-bottom: var(--margem-padrao);
         }
 
         header h1 {
-            margin: 0;
+            margin-left: 10px;
             font-size: 24px;
+            color:black;
         }
 
         nav {
@@ -64,14 +77,10 @@
             transition: background 0.3s ease;
         }
 
-        nav ul li :hover {
+        nav ul li a:hover {
+            color:white;
             background: #e3891d;
         }
-
-        .nav-left {
-            flex-grow: 1;
-        }
-
         .nav-right {
             display: flex;
             gap: 15px;
@@ -84,6 +93,7 @@
             box-shadow: var(--box-shadow);
             max-width: 1200px;
             margin: 20px auto;
+            
         }
 
         h1 {
@@ -103,7 +113,7 @@
             border-radius: 5px;
         }
 
-        li {
+        button {
             padding: 10px 20px;
             background-color: var(--secondary-color);
             color: #fff;
@@ -114,9 +124,8 @@
             transition: background 0.3s ease;
         }
 
-        li:hover {
+        button:hover {
             background-color: #e3891d;
-            color:white;
         }
 
         #result {
@@ -125,7 +134,7 @@
             max-width: 800px;
             border-radius: 10px;
             padding: 20px;
-            background-color: #fff;
+            background-color: #e8e4e4;
             box-shadow: var(--box-shadow);
         }
 
@@ -150,27 +159,30 @@
         }
 
         footer {
+            box-sizing: border-box;
+            width: 100%;
             background-color: var(--secondary-color);
             color: #fff;
             text-align: center;
             padding: 20px;
-            margin-top: 30px;
+            margin-top: var(--margem-padrao);
             box-shadow: var(--box-shadow);
+            bottom:0%;
         }
 
         footer p {
-            color:black;
+            color:#000000;
             margin: 0;
             font-size: 14px;
         }
     </style>
 </head>
 <body>
-
+   
     <header>
-        <img src="/app/templates/Logo.png" alt="logo">
-        <h1>Acervo Digital</h1>
+        <img src="logo.png" alt="logo">
         <nav>
+             
             <ul class="nav-right">
                 {% if user.is_authenticated %}
                     <li>Olá, {{ user.username }}</li>
@@ -188,7 +200,7 @@
     {% endblock %}
 
     <footer>
-        <p>&copy; 2025 Acervo Digital | Todos os direitos reservados</p>
+        <p>&copy; 2025  | Todos os direitos reservados Câmara Municipal</p>
     </footer>
 
 </body>

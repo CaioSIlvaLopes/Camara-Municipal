@@ -88,7 +88,7 @@
             align-items: center;
             text-align: center;
             border-radius: 8px;
-            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
             margin: 10px;
           }
       </style>
@@ -102,9 +102,9 @@
     </div>
     <div class="image-description">
       <div class="description">
-      <h2 class="title-image">Título: É o pombo</h2>
-      <h3 class="description-text">Descrição: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt purus felis, ut congue lacus pretium ut. Duis efficitur dapibus dignissim. Suspendisse facilisis enim non accumsan rhoncus. Phasellus et turpis auctor turpis vehicula dignissim. Aenean quis rutrum tortor, in tristique nisi. Aliquam sed luctus lectus, eget bibendum diam. In consequat lectus et mi vehicula sodales. Ut leo velit, interdum at luctus id, vestibulum sit amet est. Curabitur ante velit, congue nec odio eu, euismod dapibus purus. Suspendisse a nunc ut lorem venenatis facilisis. Donec posuere pellentesque lacus non posuere.</h3>
-      <h3 class="information">Informações: 10/02/2000</h3>
+      <h2 class="title-image">Tipo: {{ doc.tipe }}</h2>
+      <h3 class="description-text">Descrição: {{ doc.description }} </h3>
+      <h3 class="information">Data: {{ doc.date }}</h3>
       </div>
       <div class="buttons">
         <a href="{{ doc.print.url }}" print><button>Imprimir</button></a>
