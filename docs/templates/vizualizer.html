@@ -1,75 +1,120 @@
 {% extends 'base.html' %}
-
-{% block title %}
-Visualizador de Arquivo
-{% endblock %}
-
-{% block styles %}
-<style>
-    :root {
-        --primary-color: #ffffff;
-        --secondy-color: #f59a24;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-    }
-
-    .viewer-section {
-        background: var(--primary-color);
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        max-width: 800px;
-        margin: auto;
-        text-align: center;
-    }
-
-    .viewer-section img {
-        max-width: 100%;
-        height: auto;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
-
-    .viewer-section button {
-        padding: 10px 20px;
-        background-color: var(--secondy-color);
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .viewer-section button:hover {
-        background-color: #e3891d;
-    }
-
-    .viewer-section h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        color: #333;
-    }
+ {% block content %}
+ <html lang="pt-BR">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Visualizador de Imagem</title>
+      <style>
+          .container-arquivo {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+          }
+          .container-arquivo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 8px;
+          }
+          .image-description {
+           display: flex;
+           flex-direction: column;
+          }
+          .image-container {
+            max-width: 450px;
+            margin: 10px;
+          }
+          .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+          }
+          h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 30px;
+            color: #555;
+          }
+          h2.title-image, h3.description, h3.information {
+            margin-bottom: 10px;
+          }
+          .buttons{
+            align-items: right;
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+          }
+          button {
+            align-items: center;
+            font-size: 17px;
+            padding: 0.5em 2em;
+            border: none;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            background: rgb(255, 195, 30);
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+          }
+          button:hover {
+            background: linear-gradient(90deg, rgb(234, 195, 42) 0%, rgb(250, 220, 23) 100%);
+          }
+          button:active {
+            transform: translateY(0.2em);
+          }
+          .description{
+             width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+            margin: 10px;
+          }
+      </style>
+  </head>
+  <body>
+  <div class="container">
+  <h1>Visualizador de Arquivo</h1>
+  <div class="container-arquivo">
+    <div class="image-container">
+        <img src="{{ doc.photo.url }}" alt="Documento">
+    </div>
+    <div class="image-description">
+      <div class="description">
+      <h2 class="title-image">Título: É o pombo</h2>
+      <h3 class="description-text">Descrição: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt purus felis, ut congue lacus pretium ut. Duis efficitur dapibus dignissim. Suspendisse facilisis enim non accumsan rhoncus. Phasellus et turpis auctor turpis vehicula dignissim. Aenean quis rutrum tortor, in tristique nisi. Aliquam sed luctus lectus, eget bibendum diam. In consequat lectus et mi vehicula sodales. Ut leo velit, interdum at luctus id, vestibulum sit amet est. Curabitur ante velit, congue nec odio eu, euismod dapibus purus. Suspendisse a nunc ut lorem venenatis facilisis. Donec posuere pellentesque lacus non posuere.</h3>
+      <h3 class="information">Informações: 10/02/2000</h3>
+      </div>
+      <div class="buttons">
+        <a href="{{ doc.print.url }}" print><button>Imprimir</button></a>
+          <a href="{{ doc.photo.url }}" download><button>Download</button></a>
+      </div>
+    </div>
     
-</style>
-{% endblock %}
-
-{% block content %}
-<div class="viewer-section">
-    <h1>Visualizador de Arquivo</h1>
-    <div style="display: flex; align-items: center; justify-content: center;">
-    <img src="{{ doc.photo.url }}" alt="Documento" style="max-width: 700px;  max-height: 700px; display: flex;">
-
-    </div>
-    <div style="display: flex; align-items: center; justify-content: center;">
-    <a href="{{ doc.photo.url }}" download>
-        <button>Baixar Arquivo</button>
-    </a>
-    </div>
+  </div>
 </div>
+  </body>
+  </html>
+  
 {% endblock %}

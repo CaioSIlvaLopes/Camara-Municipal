@@ -8,7 +8,7 @@
     <style>
         :root {
             --primary-color: #ffffff;
-            --secondary-color: #f59a24;
+            --secondary-color: #ffffff;
             --background-color: #f4f4f4;
             --text-color: #333;
             --text-light: #777;
@@ -27,7 +27,9 @@
             background-color: var(--secondary-color);
             color: #fff;
             padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: var(--box-shadow);
         }
 
@@ -36,13 +38,17 @@
             font-size: 24px;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
             display: flex;
-            justify-content: center;
             gap: 15px;
-            margin: 10px 0 0;
+            margin: 0;
         }
 
         nav ul li {
@@ -50,7 +56,7 @@
         }
 
         nav ul li a {
-            color: #fff;
+            color: #000000;
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
@@ -58,8 +64,17 @@
             transition: background 0.3s ease;
         }
 
-        nav ul li a:hover {
+        nav ul li :hover {
             background: #e3891d;
+        }
+
+        .nav-left {
+            flex-grow: 1;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
         }
 
         .search-section {
@@ -88,7 +103,7 @@
             border-radius: 5px;
         }
 
-        button {
+        li {
             padding: 10px 20px;
             background-color: var(--secondary-color);
             color: #fff;
@@ -99,8 +114,9 @@
             transition: background 0.3s ease;
         }
 
-        button:hover {
+        li:hover {
             background-color: #e3891d;
+            color:white;
         }
 
         #result {
@@ -143,6 +159,7 @@
         }
 
         footer p {
+            color:black;
             margin: 0;
             font-size: 14px;
         }
@@ -151,24 +168,18 @@
 <body>
 
     <header>
+        <img src="/app/templates/Logo.png" alt="logo">
         <h1>Acervo Digital</h1>
         <nav>
-            <ul>
+            <ul class="nav-right">
                 {% if user.is_authenticated %}
                     <li>Olá, {{ user.username }}</li>
                     <li><a href="{% url 'new_doc' %}">Adicionar Documento</a></li>
-                {% endif %}
-
-                {% if not user.is_authenticated %}
-                    <li><a href="{% url 'register' %}">Cadastrar</a></li>
+                    <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
-
                 <li><a href="{% url 'docs_list' %}">Documentos</a></li>
-
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Sair</a></li>
-                {% endif %}
             </ul>
         </nav>
     </header>
