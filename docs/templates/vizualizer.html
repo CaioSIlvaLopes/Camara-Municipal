@@ -107,7 +107,7 @@
       <h3 class="information">Data: {{ doc.date }}</h3>
       </div>
       <div class="buttons">
-        <a href="{{ doc.print.url }}" print><button>Imprimir</button></a>
+        
           <a href="{{ doc.photo.url }}" download><button>Download</button></a>
       </div>
     </div>
@@ -118,3 +118,31 @@
   </html>
   
 {% endblock %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimir Imagem</title>
+    <style>
+        @media print {
+            /* Opcional: Ocultar tudo exceto a imagem */
+            body * {
+                visibility: hidden;
+            }
+            .printable {
+                visibility: visible;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="no-print">Clique abaixo para imprimir a imagem</h1>
+    <img src="{{ image_url }}" alt="Imagem para imprimir" class="printable" style="max-width: 100%; height: auto;">
+    <br>
+    <button onclick="window.print()">Imprimir Imagem</button>
+</body>
+</html> -->

@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from docs.forms import DocModelForm
 
+
 def docs_view(request):
     # Recupera todos os documentos ordenados por tipo
     docs_list = Docs.objects.all().order_by('tipe')
@@ -35,10 +36,10 @@ def docs_view(request):
 
 
 def docs_vizualizer(request, doc_id):
-    # Recupera o documento pelo ID ou retorna erro 404
+#     Recupera o documento pelo ID ou retorna erro 404
     doc = get_object_or_404(Docs, id=doc_id)
 
-    # Renderiza o template com o documento
+ #   Renderiza o template com o documento
     return render(request, 'vizualizer.html', {'doc': doc})
 
 
@@ -53,3 +54,8 @@ def new_doc_view(request):
     else:
      new_doc_form = DocModelForm()
     return render(request, 'new_doc.html',{'new_doc_form': new_doc_form})
+
+# #teste
+# def print_image_view(request, image_id):
+#     image_url = f'/media/{image_id}.jpg'  # Exemplo de caminho da imagem
+#     return render(request, 'vizualizer.html', {'image_url': image_url})

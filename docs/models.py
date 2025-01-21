@@ -18,5 +18,7 @@ class Docs(models.Model):#tabela documentos
     photo = models.ImageField(upload_to='docs/', blank=True, null=True)
     description=models.CharField(max_length=200,blank=True,null=True) 
 
+    
+
     def __str__(self): 
         return self.autor#retorna na tabela o nome do autor
