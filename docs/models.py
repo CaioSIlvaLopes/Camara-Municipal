@@ -15,8 +15,9 @@ class Docs(models.Model):#tabela documentos
     tipe = models.ForeignKey(Type, on_delete=models.PROTECT, related_name='type_doc')
     autor = models.CharField(max_length=200)
     date = models.DateField(blank=True, null=True)
-    photo = models.ImageField(upload_to='docs/', blank=True, null=True)
+    photo = models.FileField(upload_to='docs/', blank=True, null=True)
     description=models.CharField(max_length=200,blank=True,null=True) 
+    numProtocolo = models.CharField(max_length=15, blank=True, null=True)
 
     
 
