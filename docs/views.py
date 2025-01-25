@@ -59,3 +59,4 @@ def new_doc_view(request):
 # def print_image_view(request, image_id):
 #     image_url = f'/media/{image_id}.jpg'  # Exemplo de caminho da imagem
 #     return render(request, 'vizualizer.html', {'image_url': image_url})
+
