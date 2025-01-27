@@ -3,22 +3,63 @@
 <style>
     .container-docs{
         width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: auto;
+        height: auto;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+        box-sizing: border-box;
     }
-    
+    form{
+        flex-direction: column;
+    }
+    div{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        gap:10px;
+    }
+    .button-regis{
+        padding: 10px;
+        background-color: orange;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .button-regis:hover{
+        background-color: rgb(222, 146, 4);
+        color:black;
+    }
 </style>
-<div class="container-docs">
+ <div class="container-docs">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-<table>
-{{new_doc_form.as_table}}
-</table>
-<input type="submit" value="Cadastrar" class="bnt btn_primary">
-</form>
+<div>
+    <label for="tipe">Tipo:</label>
+    {{new_doc_form.tipe}}
+
+    <label for="autor">Autor:</label>
+    {{new_doc_form.autor}}
+
+    <label for="date">Data:</label>
+    {{new_doc_form.date}}
+
+    <label for="foto">Foto:</label>
+    {{new_doc_form.photo}}
+
+    <label for="description">Descrição:</label>
+    {{new_doc_form.description}}
+
+    <label for="numProtocolo">Numero de Protocolo:</label>
+    {{new_doc_form.numProtocolo}}
 </div>
+<input type="submit" value="Cadastrar" class="button-regis">
+</form>
+</div> 
+
 {% endblock %}

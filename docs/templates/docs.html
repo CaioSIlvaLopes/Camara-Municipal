@@ -18,7 +18,7 @@
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        max-width: 1200px;
+        max-width: 900px;
         margin: auto;
     }
 
@@ -176,12 +176,12 @@
             {% if page_obj %}
                 {% for doc in page_obj %}
                     <div class="card">
-                        <h3> {{ doc.tipe }}: {{ doc.code }}/{{ doc.date }} 
+                        <h3> {{ doc.tipe }}: {{ doc.code }}/{{ doc.numProtocolo }} 
                             
                         </h3>
                         <p>
                             {{ doc.description }}
-                            <a href="{% url 'docs_vizualizer' doc.id %}" target="_blank">Veja mais</a>
+                            <a href="{{ doc.photo.url }}" target="_blank">Veja mais</a>
                         </p>
                         <div class="info">
                             <span class="date">

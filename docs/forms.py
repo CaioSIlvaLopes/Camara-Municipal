@@ -2,6 +2,8 @@ from django import forms
 from docs.models import  Docs
 
 
+
+
 class DocModelForm(forms.ModelForm):
         
         class Meta:
@@ -14,3 +16,14 @@ class DocModelForm(forms.ModelForm):
 #       if 
 
 #       self.add_error()
+ 
+
+ #testando 
+# class SeuModeloForm(forms.ModelForm):
+#     class Meta:
+#         model = Docs
+#         fields = '__all__'  # Ou liste os campos específicos que deseja incluir
+#         labels = {
+#             'tipe': 'Tipo do Documento',
+#             'autor': 'Nome do Autor',
+        # }
