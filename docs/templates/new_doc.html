@@ -36,13 +36,30 @@
         color:black;
     }
 </style>
-<div class="container-docs">
+ <div class="container-docs">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 <div>
-{{new_doc_form.as_table}}
+    <label for="tipe">Tipo:</label>
+    {{new_doc_form.tipe}}
+
+    <label for="autor">Autor:</label>
+    {{new_doc_form.autor}}
+
+    <label for="date">Data:</label>
+    {{new_doc_form.date}}
+
+    <label for="foto">Foto:</label>
+    {{new_doc_form.photo}}
+
+    <label for="description">Descrição:</label>
+    {{new_doc_form.description}}
+
+    <label for="numProtocolo">Numero de Protocolo:</label>
+    {{new_doc_form.numProtocolo}}
 </div>
 <input type="submit" value="Cadastrar" class="button-regis">
 </form>
-</div>
+</div> 
+
 {% endblock %}

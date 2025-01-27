@@ -14,19 +14,23 @@ body {
 
 .container {
   width: 400px;
-  height: 300px;
-  margin: 0 auto;
+  height: auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 form{
-    display: block;
+  display: block;
 }
 .form-group {
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
@@ -35,6 +39,8 @@ input[type="text"], input[type="email"], input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+
+  margin-bottom: 10px;
 }
 
 button {
@@ -53,9 +59,6 @@ button:hover {
 </style>
 </head>
 <body>
-
-  
-
   <div class="container">
     <form method="post">
       {% csrf_token %}
